@@ -1,0 +1,57 @@
+.owed-list li img {
+
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.negative-entry img {
+    height: 25px;
+}
+
+/*.name {*/
+/*    margin-left: 5px;*/
+/*}*/
+
+.entry:hover {
+    background-color: #ddd;
+}
+
+.entry a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.entry {
+    padding: 0.5em 1em;
+    margin: 2px 0 10px;
+}
+
+.create-expense-modal {
+    width: 70%;
+    max-width: none !important;
+}
+
+
+.dot-red {
+    height: 25px;
+    width: 25px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+
+}
+
+.dot-green {
+    height: 25px;
+    width: 25px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.entry{
+    border-bottom: 0.5px solid gray;
+}

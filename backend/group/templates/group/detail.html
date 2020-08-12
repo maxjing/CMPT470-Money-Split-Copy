@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>{{ group.name }}</h1>
+        <hr>
+        <h2>Members</h2>
+        {% for group_user in group.users.all %}
+            <p>
+                {{ group_user.username }}
+            </p>
+        {% endfor %}
+        <form action="{% url 'group:add_friend' group.id %}" method="post">
+            {% csrf_token %}
+            <div class="inline">
+                {{ add_friend_form }}
+                <input type="submit" value="Add friend">
+            </div>
+        </form>
+        {% if not group.expense_set.all %}
+            <div>No expenses created yet. <a href="{% url 'expense:new' group.id %}">Create One</a></div>
+        {% else %}
+
+            <h2>Expenses</h2>
+            <table style="width:50%">
+                <tr>
+                    <td>Name:</td>
+                    <td>Amount:</td>
+                    <td>Date:</td>
+                </tr>
+                    {% for expense in group.expense_set.all %}
+                    <tr>
+                        {% if expense.amount != 0 %}
+                            <td>
+                                <a href="{% url 'expense:details' expense.id %}">{{ expense.name }}</a>
+                            </td>
+                            <td>
+                                {{ expense.amount }}
+                            </td>
+                            <td>
+                                {{ expense.date }}
+                            </td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+            </table>
+            <a href="{% url 'expense:new' group.id %}">Add new expense</a>
+        {% endif %}
+    </div>
+{% endblock %}

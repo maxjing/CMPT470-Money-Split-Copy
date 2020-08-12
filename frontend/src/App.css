@@ -1,0 +1,9 @@
+.Nav {
+    margin-bottom: 1em;
+}
+
+.plain-link, .plain-link:hover {
+    text-decoration: none;
+    text-decoration-color: inherit;
+    color: black;
+}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <form action="{% url 'expense:pay' expense.id %}" method="post">
+        {% csrf_token %}
+        <h1>Make a payment for {{ expense.name }}</h1>
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Make Payment</button>
+    </form>
+</div>
+{% endblock %}
+
+
+
+

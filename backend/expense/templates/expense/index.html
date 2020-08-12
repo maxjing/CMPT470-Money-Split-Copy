@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1>Your current expenses: </h1>
+        <table style="width:50%">
+            <tr>
+                <td>Name: </td>
+                <td>Amount: </td>
+                <td>Date: </td>
+            </tr>
+            {% for exp in expenses%}
+            <tr>
+                {% if exp.amount != 0 %}
+                    <td>{{exp.name}}</td>
+                    <td>${{exp.amount}}</td>
+                    <td>{{exp.date}}</td>
+                    <td><a href="{% url 'expense:pay' exp.id %}">Make Payment</a></td>
+                {% endif %}
+            </tr>
+            {%endfor%}
+            </table>
+            <a href="{% url 'index' %}">Return to dashboard</a>
+    </div>
+{% endblock %}

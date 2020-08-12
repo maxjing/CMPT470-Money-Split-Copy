@@ -1,0 +1,13 @@
+<h1>groups for: {{current_profile.user.first_name}} {{current_profile.user.last_name}} </h1>
+{% for group in current_profile.group_set.all %}
+    <p>
+        {{group.id}} : {{group.name}}
+        {% for groupExpense in group.expense_set.all %}
+            {% for userExpense in groupExpense.userexpense_set.all %}
+                {% if userExpense.user.id == current_id %}
+                <div>your user expense for group name : {{group.name}} -> {{userExpense.amount}} </div>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+    </p>
+{% endfor %}

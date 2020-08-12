@@ -1,0 +1,18 @@
+<form action="{% url 'group:add_friend' group.id %}" method="post">
+
+    {% csrf_token %}
+
+    <div class="d-inline">
+        <label>
+            Email:
+            <input name="user_email" type="text" placeholder="email@email.com">
+        </label>
+{#        or#}
+{#        <label>#}
+{#            Name:#}
+{#            <input name="user_name" type="text" placeholder="John Doe">#}
+{#        </label>#}
+    </div>
+    <input type="submit" value="Add friend">
+
+</form>

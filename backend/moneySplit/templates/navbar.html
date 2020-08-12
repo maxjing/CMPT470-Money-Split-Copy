@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'index' %}">MoneySplit</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {% if user.is_authenticated %}
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'index' %}">Dashboard</a>
+                </li>
+            </ul>
+            <div>Welcome, <b>{{ user.username }}</b></div>
+            <a class="ml-2 btn btn-primary" href="{% url 'user:logout' %}">Logout</a>
+        {% else %}
+            <div class="mr-auto"></div>
+            <a class="btn btn-primary" href="{% url 'user:login' %}">Login</a>
+            <a class="btn btn-primary ml-1" href="{% url 'user:new' %}">Sign Up</a>
+        {% endif %}
+    </div>
+</nav>
